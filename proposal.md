@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Compiler Project – Initial Definition
 
 ## 1. Student Information
