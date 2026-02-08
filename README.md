@@ -1,7 +1,7 @@
-# Java-to-Java Bytecode Compiler
+# Java-to-MIPS Compiler
 
 ## Overview
-In this project, I will design and implement a simple compiler that translates a subset of the Java programming to Java bytecode using Python.
+In this project, I will design and implement a simple compiler that translates a subset of the Java programming to MIPS using C.
 
 
 ---
@@ -12,7 +12,7 @@ In this project, I will design and implement a simple compiler that translates a
 - Semantic analysis -- including type checking and so on.
 - Intermediate representation
 - Optimizations (if any)
-- Code generation -- Generation of Java bytecode.
+- Code generation -- Generation of MIPS.
 
 ---
 
@@ -26,14 +26,13 @@ The compiler consists of the following components:
 ---
 
 ## Tools & Requirements
-- Python
-- Python standard libraries
-- unittest (for testing)
+- C
+- MARS(MIPS TESTER)
 
 ---
 
 ## How to Run
 1. Write Java source code using the supporte language subset.
-2. Run the compiler
+2. Run the compiler to get MIPS code.
 
 
