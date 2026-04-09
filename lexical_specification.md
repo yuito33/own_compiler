@@ -20,7 +20,7 @@ ALL the tokens that your language will use.
 - <
 - >
 - #
-- .
+- ;
 - [DIGITS]
 - [VARIABLES]
 - if
