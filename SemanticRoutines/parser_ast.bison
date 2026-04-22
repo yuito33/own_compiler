@@ -3,10 +3,12 @@
      #include <stdlib.h>
      #include "ast.h"     
 
+     struct stmt * parser_result;
      extern char *yytext;
      extern int yylex(void);
      
-     struct decl * parser_result = 0;
+     int yyerror(char *s);
+     
 %}
 
 %token TOKEN_PLUS
@@ -41,10 +43,11 @@
      struct type *type;
      char *name;
 };
+ 
+%type <stmt> program stmt_list stmt simple_stmt if_stmt statement
+%type <expr> comparison expr term factor
+%type <decl> decl
 
-%type <decl> program stmt_list decl 
-%type <stmt> stmt simple_stmt if_stmt
-%type <expr> comparison expr term factor statement
 %type <type> type
 %token <type> TOKEN_INT TOKEN_STRING
 %type <name> name
@@ -57,7 +60,7 @@
 program : stmt_list		{ parser_result = $1; }
 	;
 
-stmt_list : stmt_list stmt	{ $$ = $2; $2->next = $1;} 
+stmt_list : stmt_list stmt	{ $2->next = $1; $$ = $2; } 
 	| stmt			{ $$ = $1; }
 	;
 
@@ -114,7 +117,7 @@ type : TOKEN_INT	{ $$ = type_create(TYPE_INTEGER, 0, 0); }
 	| TOKEN_STRING	{ $$ = type_create(TYPE_STRING, 0, 0); }
 	;
 
-name : TOKEN_VARIABLE	{ $$ = strdup(yytext); }
+name : TOKEN_VARIABLE	{ $$ = yytext; }
 	;
 %%
 

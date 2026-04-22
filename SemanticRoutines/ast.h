@@ -3,6 +3,13 @@
 #include <string.h>
 
 
+
+struct expr;
+struct stmt;
+struct decl;
+struct param_list;
+struct type;
+
 /********************************
 	  TYPES
 ********************************/
@@ -62,6 +69,12 @@ struct param_list * param_list_create( char *name,
 
     return p;
 }
+
+void type_print(struct type *t);
+void param_list_print(struct param_list *p);
+void expr_print(struct expr *e);
+void decl_print(struct decl *d);
+void stmt_print(struct stmt *s);
 
 
 void type_print(struct type *t)
@@ -307,6 +320,12 @@ struct stmt * stmt_create( stmt_t kind,
 }
 
 
+void type_print(struct type *t);
+void param_list_print(struct param_list *p);
+void expr_print(struct expr *e);
+void decl_print(struct decl *d);
+void stmt_print(struct stmt *s);
+
 void stmt_print(struct stmt *s)
 {
     if(!s) return;
@@ -367,3 +386,4 @@ void stmt_print(struct stmt *s)
     stmt_print(s->next);
 }
 
+//stdout = original;

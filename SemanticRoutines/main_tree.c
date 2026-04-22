@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-extern struct decl * parser_result;
+extern struct stmt * parser_result;
 extern int yyparse();
-extern void decl_print(struct decl *e );
+extern void stmt_print(struct stmt *e );
 extern FILE *yyin;
 
 int main(int argc, char **argv)
@@ -20,7 +20,17 @@ int main(int argc, char **argv)
 	
 	if(yyparse()==0) { 		// Start parsing
 	  printf("Parse successful!\n AST: \n ------- \n");
-	  decl_print(parser_result);
+	  
+	  stmt_print(parser_result);
+
+	  FILE *original = stdout;
+          freopen("output.txt", "w", stdout);
+
+	  stmt_print(parser_result);
+	  
+	  stdout = original;
+
+
 	  printf("\n");
 	} else {
 	  printf("Parse failed.\n");
